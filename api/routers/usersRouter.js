@@ -11,7 +11,7 @@ const { restrict } = require('../middleware/restricted')
 
 const router = express.Router()
 
-router.get('/users', async (req,res,next) => {
+router.get('/', async (req,res,next) => {
    try{
       const users = await getUsers()
       res.status(200).json(users)
