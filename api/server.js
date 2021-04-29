@@ -13,7 +13,7 @@ server.use(cors())
 
 server.use(express.json())
 server.use("/api/users", usersRouter)
-server.use(plantsRouter)
+server.use("/api/plants",plantsRouter)
 
 server.get("/", (req, res) => {
 	res.json({
