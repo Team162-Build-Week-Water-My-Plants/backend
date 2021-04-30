@@ -10,7 +10,7 @@ const { restrict } = require('../middleware/restricted')
 
 const router = express.Router()
 
-router.get("/plants", restrict, async (req, res, next) => {
+router.get("/", restrict, async (req, res, next) => {
    console.log("called")
 	try {
 		const plantsFromDB = await getPlants()
@@ -21,7 +21,7 @@ router.get("/plants", restrict, async (req, res, next) => {
 	}
 })
 
-router.post("/plants", restrict, async (req,res,next)=> {
+router.post("/", restrict, async (req,res,next)=> {
 
    try{
       const returnedPlant = await addPlant(req.body)

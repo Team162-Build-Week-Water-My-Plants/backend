@@ -1,6 +1,7 @@
 const express = require('express')
 const bcrypt = require("bcryptjs")
 const jwt = require("jsonwebtoken") 
+require("dotenv").config();
 const { 
    getUsers, 
    add, 
@@ -37,8 +38,8 @@ router.post('/register', async (req, res, next) => {
 			password: await bcrypt.hash(req.body.password, 12),
          phone_number: req.body.phone_number
 		})
+      
       const token = jwt.sign({ id: newUser.id, username: newUser.username}, process.env.JWT_SECRET )
-
       const returnNewUser =  { id: newUser.id, username: newUser.username, token } 
 
 		res.status(201).json(returnNewUser)
